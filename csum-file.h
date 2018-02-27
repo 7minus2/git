@@ -29,6 +29,7 @@ extern int hashfile_truncate(struct hashfile *, struct hashfile_checkpoint *);
 /* hashclose flags */
 #define CSUM_CLOSE	1
 #define CSUM_FSYNC	2
+#define CSUM_KEEP_OPEN	4
 
 extern struct hashfile *hashfd(int fd, const char *name);
 extern struct hashfile *hashfd_check(const char *name);

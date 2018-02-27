@@ -66,9 +66,13 @@ int hashclose(struct hashfile *f, unsigned char *result, unsigned int flags)
 		flush(f, f->buffer, the_hash_algo->rawsz);
 		if (flags & CSUM_FSYNC)
 			fsync_or_die(f->fd, f->name);
-		if (close(f->fd))
-			die_errno("%s: sha1 file error on close", f->name);
-		fd = 0;
+		if (flags & CSUM_KEEP_OPEN)
+			fd = f->fd;
+		else {
+			if (close(f->fd))
+				die_errno("%s: sha1 file error on close", f->name);
+			fd = 0;
+		}
 	} else
 		fd = f->fd;
 	if (0 <= f->check_fd) {
