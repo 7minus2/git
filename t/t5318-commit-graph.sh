@@ -222,4 +222,3 @@ graph_git_behavior 'bare repo with graph, commit 8 vs merge 1' bare commits/8 me
 graph_git_behavior 'bare repo with graph, commit 8 vs merge 2' bare commits/8 merge/2
 
 test_done
-

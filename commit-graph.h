@@ -44,4 +44,3 @@ void write_commit_graph(const char *obj_dir,
 			int additive);
 
 #endif
-
